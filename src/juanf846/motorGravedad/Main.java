@@ -34,6 +34,7 @@ public class Main{
 		return fisicas;
 	}
 	
+	
 	private static void inicializarConsola() {
 		consola.addCommand(new juanf846.motorGravedad.comandos.Configuracion());
 		
