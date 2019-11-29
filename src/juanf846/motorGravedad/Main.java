@@ -41,6 +41,7 @@ public class Main{
 		consola.addCommand(new juanf846.motorGravedad.comandos.Play());
 		consola.addCommand(new juanf846.motorGravedad.comandos.Pausar());
 		consola.addCommand(new juanf846.motorGravedad.comandos.Listar());
+		consola.addCommand(new juanf846.motorGravedad.comandos.Eliminar());
 		
 		new Thread(new Runnable() {
 			@Override
