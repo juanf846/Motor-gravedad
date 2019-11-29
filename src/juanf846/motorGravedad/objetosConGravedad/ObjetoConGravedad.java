@@ -1,9 +1,6 @@
 package juanf846.motorGravedad.objetosConGravedad;
 
 import java.awt.Color;
-import java.awt.Point;
-import java.util.List;
-import java.util.Vector;
 
 import juanf846.motorGravedad.util.Vector2;
 

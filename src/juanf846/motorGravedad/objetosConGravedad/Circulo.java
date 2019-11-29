@@ -1,12 +1,9 @@
 package juanf846.motorGravedad.objetosConGravedad;
 
 import java.awt.Color;
-import java.awt.Point;
-import java.util.Vector;
 import java.util.logging.Logger;
 
 import juanf846.motorGravedad.Configuracion;
-import juanf846.motorGravedad.Main;
 import juanf846.motorGravedad.Configuracion.Clave;
 import juanf846.motorGravedad.util.Vector2;
 
