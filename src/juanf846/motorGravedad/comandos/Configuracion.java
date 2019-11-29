@@ -12,11 +12,9 @@ import juanf846.motorGravedad.Configuracion.Clave;
 
 @Command(name = "config")
 public class Configuracion {
+	
 	@Output
 	private PrintStream out;
-	
-	@Input
-	private Scanner scan;
 	
 	@Run
 	public void run(String[] args) {

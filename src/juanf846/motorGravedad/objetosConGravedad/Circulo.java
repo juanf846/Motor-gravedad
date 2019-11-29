@@ -63,9 +63,12 @@ public class Circulo extends ObjetoConGravedad{
 		nextId++;
 	}
 	
+	/** 
+	 * Fuerza en Newtons
+	 */
 	@Override
 	public void agregarFuerza(Vector2 v) {
-		movimiento.adicion(v);
+		movimiento.adicion(Vector2.division(v, masa));
 	}
 	
 	@Override

@@ -55,6 +55,16 @@ public class Vector2 {
 		this.y = this.y*x;
 	}
 	
+	public void division(Vector2 v2) {
+		this.x = this.x/v2.x;
+		this.y = this.y/v2.y;
+	}
+	
+	public void division(double x) {
+		this.x = this.x/x;
+		this.y = this.y/x;
+	}
+	
 	public Vector2 negado() {
 		this.x = this.x*-1;
 		this.y = this.y*-1;
@@ -114,6 +124,20 @@ public class Vector2 {
 		Vector2 p = new Vector2();
 		p.x = v1.x*x;
 		p.y = v1.y*x;
+		return p;
+	}
+	
+	public static Vector2 division(Vector2 v1, Vector2 v2) {
+		Vector2 p = new Vector2();
+		p.x = v1.x/v2.x;
+		p.y = v1.y/v2.y;
+		return p;
+	}
+	
+	public static Vector2 division(Vector2 v1, double x) {
+		Vector2 p = new Vector2();
+		p.x = v1.x/x;
+		p.y = v1.y/x;
 		return p;
 	}
 	

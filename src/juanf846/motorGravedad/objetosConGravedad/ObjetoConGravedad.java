@@ -7,7 +7,7 @@ import juanf846.motorGravedad.util.Vector2;
 public abstract class ObjetoConGravedad {
 
     public static final double CONSTANTE_GRAVEDAD = 6.67428e-11f; //6.67428e-11f
-	public static final double MULTIPLICADOR=1e+9f;
+	public static final double MULTIPLICADOR=1e+10f;
 
 	public abstract void setCalcularGravedad(boolean x);
 	public abstract void setColor(Color c);

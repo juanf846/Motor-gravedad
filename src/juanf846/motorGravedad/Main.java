@@ -37,7 +37,9 @@ public class Main{
 	
 	private static void inicializarConsola() {
 		consola.addCommand(new juanf846.motorGravedad.comandos.Configuracion());
-		
+		consola.addCommand(new juanf846.motorGravedad.comandos.Agregar());
+		consola.addCommand(new juanf846.motorGravedad.comandos.Play());
+		consola.addCommand(new juanf846.motorGravedad.comandos.Pausar());
 		
 		new Thread(new Runnable() {
 			@Override
@@ -79,8 +81,8 @@ public class Main{
 	}
 	
 	public static void main(String[] args) {
-		ventana = new Ventana();
 		fisicas = new Fisicas();
+		ventana = new Ventana();
 		consola = new Shell();
 		
 		inicializarLog();
