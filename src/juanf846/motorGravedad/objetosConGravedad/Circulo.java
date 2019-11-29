@@ -9,13 +9,10 @@ import juanf846.motorGravedad.util.Vector2;
 
 public class Circulo extends ObjetoConGravedad{
 
-	private static int nextId=0;
 	private static Logger LOG = Logger.getLogger(Circulo.class.getName());
 	
-	private int id;
 	private double radio;
 	private Vector2 movimiento;
-	private Vector2 posicion;
 	private double masa;
 	private Color color;
 	private boolean calcularGravedad;
@@ -59,8 +56,6 @@ public class Circulo extends ObjetoConGravedad{
 		color = Color.BLACK;
 		calcularGravedad = true;
 		radio = 2.5;
-		id=nextId;
-		nextId++;
 	}
 	
 	/** 
@@ -167,6 +162,9 @@ public class Circulo extends ObjetoConGravedad{
 	public static int cuerposMuyCerca = 0;
 	@Override
 	public void calcularGravedad(ObjetoConGravedad obj2) {
+		double CONSTANTE_GRAVEDAD = Configuracion.getInstance().getDouble(Clave.CONSTANTE_GRAVEDAD);
+		double MULTIPLICADOR = Configuracion.getInstance().getDouble(Clave.MULTIPLICADOR_GRAVEDAD);
+		
 		double distancia = Vector2.distancia(this.getPosicion(), obj2.getPosicion());
 		//if(distancia<1) distancia=1;
 		double fuerza = (this.getMasa() * obj2.getMasa() / ((double)Math.pow(distancia, 2))) * CONSTANTE_GRAVEDAD;
@@ -186,8 +184,4 @@ public class Circulo extends ObjetoConGravedad{
         }
 	}
 	
-	@Override
-	public String toString() {
-		return "(Id="+id+"|Posicion="+posicion+"|Velocidad="+movimiento+"|Radio="+radio+")";
-	}
 }
