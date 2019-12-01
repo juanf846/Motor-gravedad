@@ -21,7 +21,6 @@ import juanf846.motorGravedad.util.Vector2;
 public class Ventana extends JPanel implements KeyListener{
 	
 	private static final int RADIO_CIRCULO = 5;
-	private static final int RADIO_PARTICULAS = 1;
 
 	private float zoom = 2;
 	private int desplazamientoX = 0;
@@ -65,8 +64,8 @@ public class Ventana extends JPanel implements KeyListener{
 		for(int i=0;i<fisicas.objetos.size();i++) {
 			g.setColor(fisicas.objetos.get(i).getColor());
 			g.fillOval((int)(fisicas.objetos.get(i).getPosicion().x*zoom)+desplazamientoX
-					, (int)(fisicas.objetos.get(i).getPosicion().y*zoom)+desplazamientoY
-					, (int)(RADIO_CIRCULO*zoom), (int)(RADIO_CIRCULO*zoom));
+					,(int)(fisicas.objetos.get(i).getPosicion().y*zoom)+desplazamientoY
+					,(int)(RADIO_CIRCULO*zoom), (int)(RADIO_CIRCULO*zoom));
 			if(trayectorias) {
 				particulasTrayectorias[particulasTrayectoriasIndex]=(Vector2) fisicas.objetos.get(i).getPosicion().clone();
 				particulasTrayectoriasIndex++;

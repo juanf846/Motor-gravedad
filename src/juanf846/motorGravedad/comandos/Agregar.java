@@ -1,12 +1,12 @@
 package juanf846.motorGravedad.comandos;
 
+import java.awt.Color;
 import java.io.PrintStream;
 
 import juanf846.javaSimpleCLI.annotations.Command;
 import juanf846.javaSimpleCLI.annotations.Help;
 import juanf846.javaSimpleCLI.annotations.Output;
 import juanf846.javaSimpleCLI.annotations.Run;
-import juanf846.motorGravedad.Fisicas;
 import juanf846.motorGravedad.Main;
 import juanf846.motorGravedad.objetosConGravedad.Circulo;
 import juanf846.motorGravedad.objetosConGravedad.ObjetoConGravedad;
@@ -60,6 +60,7 @@ public class Agregar {
 				out.println("Error: Tipo no valido");
 				return;
 		}
+		nuevo.setColor(Color.BLUE);
 		Main.getFisicas().objetos.add(nuevo);
 		
 	}

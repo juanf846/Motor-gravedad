@@ -68,6 +68,7 @@ public class Main{
 		LOG = Logger.getLogger(Main.class.getName());
 	}
 	
+	@SuppressWarnings("unused")
 	private static void cargarObjetosDebug() {
 		System.out.println("Objetos generados: ");
 		Random ran = new Random(20);

@@ -26,6 +26,7 @@ public class Fisicas {
 	
 	Fisicas(){
 		objetos = new ArrayList<ObjetoConGravedad>();
+		activado = true;
 	}
 	
 	public void calcularFisicas() {
