@@ -1,6 +1,4 @@
-package test;
-
-import static org.junit.jupiter.api.Assertions.*;
+package juanf846.motorGravedad.test;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
@@ -18,10 +16,10 @@ class TestClasePunto {
 		p1 = new Vector2(-3,4);
 		p2 = new Vector2(5,-2);
 
-		Assertions.assertEquals(new Vector2(2,2), Vector2.adicion(p1, p2));
-		Assertions.assertEquals(new Vector2(-1,6), Vector2.adicion(p1, 2));
-		Assertions.assertEquals(new Vector2(-8,6), Vector2.sustraccion(p1, p2));
-		Assertions.assertEquals(new Vector2(-5,2), Vector2.sustraccion(p1, 2));
+		Assert.assertEquals(new Vector2(2,2), Vector2.adicion(p1, p2));
+		Assert.assertEquals(new Vector2(-1,6), Vector2.adicion(p1, 2));
+		Assert.assertEquals(new Vector2(-8,6), Vector2.sustraccion(p1, p2));
+		Assert.assertEquals(new Vector2(-5,2), Vector2.sustraccion(p1, 2));
 		
 		
 	}

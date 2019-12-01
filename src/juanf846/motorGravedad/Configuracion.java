@@ -13,7 +13,9 @@ public class Configuracion {
 		MAX_FRAMES("maxFrames",Integer.class),
 		PASOS_FISICAS("pasosFisicas",Integer.class),
 		COLISIONES("colisiones",Boolean.class),
-		TRAYECTORIAS("trayectorias",Boolean.class);
+		TRAYECTORIAS("trayectorias",Boolean.class),
+		CONSTANTE_GRAVEDAD("constanteGravedad",Double.class),
+		MULTIPLICADOR_GRAVEDAD("multiplicadorGravedad",Double.class);
 		
 		private String nombre;
 		private Class<?> tipo;
@@ -50,6 +52,8 @@ public class Configuracion {
 		set(Clave.PASOS_FISICAS, 2);
 		set(Clave.COLISIONES, false);
 		set(Clave.TRAYECTORIAS,false);
+		set(Clave.CONSTANTE_GRAVEDAD,6.67428e-11);
+		set(Clave.MULTIPLICADOR_GRAVEDAD,1e+10);
 	}
 	
 	public static Configuracion getInstance() {
@@ -71,6 +75,14 @@ public class Configuracion {
 			return (float) valor;
 		}
 		throw new RuntimeException("La configuracion \""+clave+"\" no es de tipo float");
+	}
+	
+	public double getDouble(Clave clave) {
+		Object valor = clavesValor.get(clave.getNombre());
+		if(valor instanceof Double) {
+			return (double) valor;
+		}
+		throw new RuntimeException("La configuracion \""+clave+"\" no es de tipo double");
 	}
 	
 	public String getString(Clave clave) {

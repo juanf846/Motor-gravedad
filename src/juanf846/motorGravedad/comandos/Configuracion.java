@@ -1,22 +1,18 @@
 package juanf846.motorGravedad.comandos;
 
 import java.io.PrintStream;
-import java.util.Scanner;
 
 import juanf846.javaSimpleCLI.annotations.Command;
 import juanf846.javaSimpleCLI.annotations.Help;
-import juanf846.javaSimpleCLI.annotations.Input;
 import juanf846.javaSimpleCLI.annotations.Output;
 import juanf846.javaSimpleCLI.annotations.Run;
 import juanf846.motorGravedad.Configuracion.Clave;
 
 @Command(name = "config")
 public class Configuracion {
+	
 	@Output
 	private PrintStream out;
-	
-	@Input
-	private Scanner scan;
 	
 	@Run
 	public void run(String[] args) {
