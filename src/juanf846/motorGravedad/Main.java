@@ -72,7 +72,7 @@ public class Main{
 	private static void cargarObjetosDebug() {
 		System.out.println("Objetos generados: ");
 		Random ran = new Random(20);
-		for(int i=0;i<3;i++) {
+		/*for(int i=0;i<3;i++) {
 			Circulo c = new Circulo(ran.nextInt(100)+100, ran.nextInt(100)+100, ran.nextInt(50)+3);
 			c.setColor(Color.BLUE);
 			if(i==0) {
@@ -80,10 +80,22 @@ public class Main{
 			}
 			LOG.info("Objeto["+i+"] pos: "+c.getPosicion()+" masa: "+c.getMasa());
 			fisicas.objetos.add(c);
-		}
+		}*/
+
+		Circulo c2 = new Circulo(60, 95.4, 10);
+		c2.setColor(Color.BLUE);
+		c2.agregarFuerza(new Vector2(0,0));
+		fisicas.objetos.add(c2);
+		
+		Circulo c = new Circulo(80, 100, 10);
+		c.setColor(Color.RED);
+		c.agregarFuerza(new Vector2(-100,0));
+		fisicas.objetos.add(c);
+		
+
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) {		
 		fisicas = new Fisicas();
 		ventana = new Ventana();
 		consola = new Shell();
@@ -91,6 +103,8 @@ public class Main{
 		inicializarLog();
 		cargarObjetosDebug();
 		inicializarConsola();
+
+		LOG.info(""+Math.toDegrees(Math.atan(1)));
 		
 		try {
 			while(true) {
@@ -129,6 +143,7 @@ public class Main{
 			frameRate = frame+1;
 			frame = 0;
 			ultimoSegundo=tiempo;
+			//LOG.debug("Suma de momento: ")
 		}
 	}
 

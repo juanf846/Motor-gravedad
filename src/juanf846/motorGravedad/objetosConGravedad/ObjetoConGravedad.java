@@ -28,7 +28,7 @@ public abstract class ObjetoConGravedad {
 	public abstract void agregarFuerza(Vector2 v);
 	public abstract void calcularGravedad(ObjetoConGravedad objeto2);
 	public abstract void calcularMovimiento(ObjetoConGravedad[] otrosObjetos, int pasos);
-	public abstract void calcularColision(ObjetoConGravedad obj);
+	//public abstract void calcularColision(ObjetoConGravedad obj);
 	
 	public String toString() {
 		return "(Id="+id+"|Posicion="+getPosicion()+"|Masa="+getMasa()+")";

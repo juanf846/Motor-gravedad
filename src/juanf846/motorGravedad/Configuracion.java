@@ -49,11 +49,12 @@ public class Configuracion {
 	private Configuracion() {
 		clavesValor = new HashMap<String,Object>();
 		set(Clave.MAX_FRAMES, 60);
-		set(Clave.PASOS_FISICAS, 2);
-		set(Clave.COLISIONES, false);
+		set(Clave.PASOS_FISICAS, 1);
+		set(Clave.COLISIONES, true);
 		set(Clave.TRAYECTORIAS,false);
 		set(Clave.CONSTANTE_GRAVEDAD,6.67428e-11);
-		set(Clave.MULTIPLICADOR_GRAVEDAD,1e+10);
+		//set(Clave.MULTIPLICADOR_GRAVEDAD,1e+11);
+		set(Clave.MULTIPLICADOR_GRAVEDAD,0d);
 	}
 	
 	public static Configuracion getInstance() {

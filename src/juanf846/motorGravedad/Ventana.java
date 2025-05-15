@@ -52,8 +52,8 @@ public class Ventana extends JPanel implements KeyListener{
 			g.setColor(Color.BLACK);
 			for(int i=0;i<particulasTrayectorias.length;i++) {
 				if(particulasTrayectorias[i]!=null) {
-					int particulaX = (int)(particulasTrayectorias[i].x*zoom+desplazamientoX+(RADIO_CIRCULO*zoom)/2);
-					int particulaY = (int)(particulasTrayectorias[i].y*zoom+desplazamientoY+(RADIO_CIRCULO*zoom)/2);
+					int particulaX = (int)(particulasTrayectorias[i].getX()*zoom+desplazamientoX+(RADIO_CIRCULO*zoom)/2);
+					int particulaY = (int)(particulasTrayectorias[i].getY()*zoom+desplazamientoY+(RADIO_CIRCULO*zoom)/2);
 					g.drawLine(particulaX, particulaY, particulaX, particulaY); 
 				}else {
 					particulasDisponibles++;
@@ -63,8 +63,8 @@ public class Ventana extends JPanel implements KeyListener{
 		Fisicas fisicas = Main.getFisicas();
 		for(int i=0;i<fisicas.objetos.size();i++) {
 			g.setColor(fisicas.objetos.get(i).getColor());
-			g.fillOval((int)(fisicas.objetos.get(i).getPosicion().x*zoom)+desplazamientoX
-					,(int)(fisicas.objetos.get(i).getPosicion().y*zoom)+desplazamientoY
+			g.fillOval((int)(fisicas.objetos.get(i).getPosicion().getX()*zoom)+desplazamientoX
+					,(int)(fisicas.objetos.get(i).getPosicion().getY()*zoom)+desplazamientoY
 					,(int)(RADIO_CIRCULO*zoom), (int)(RADIO_CIRCULO*zoom));
 			if(trayectorias) {
 				particulasTrayectorias[particulasTrayectoriasIndex]=(Vector2) fisicas.objetos.get(i).getPosicion().clone();

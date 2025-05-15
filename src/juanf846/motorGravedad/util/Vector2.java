@@ -1,18 +1,40 @@
 package juanf846.motorGravedad.util;
 
 public class Vector2 {
-	public double x;
-	public double y;
+	private double x;
+	private double y;
+
+	public double amplitude;
+	public Vector2 normalized = null;
 	
 	public Vector2(double x, double y) {
 		this.x=x;
 		this.y=y;
+		resetCache();
 	}
 	public Vector2() {
 		x=0;
 		y=0;
+		resetCache();
 	}
-	
+
+	private void resetCache(){
+		amplitude = Double.NaN;
+		normalized = null;
+	}
+
+	public double getX() {
+		return x;
+	}
+
+	public double getY() {
+		return y;
+	}
+
+	public boolean isNaN(){
+		return Double.isNaN(x) && Double.isNaN(y);
+	}
+
 	public double distancia(Vector2 v1) {
 		double distanciaX;
 		double distanciaY;
@@ -22,55 +44,53 @@ public class Vector2 {
 		distanciaY = v1.y-this.y;
 		if(distanciaY<0) distanciaY *= -1;
 		
-		return (double) Math.sqrt(Math.pow(distanciaX,2)+Math.pow(distanciaY, 2));
+		return Math.sqrt(Math.pow(distanciaX,2)+Math.pow(distanciaY, 2));
 	}
 
-	public void adicion(Vector2 v2) {
-		this.x = this.x+v2.x;
-		this.y = this.y+v2.y;
+	public Vector2 add(Vector2 v2) {
+		return new Vector2(this.x+v2.x, this.y+v2.y);
 	}
 	
-	public void adicion(double x) {
-		this.x = this.x+x;
-		this.y = this.y+x;
+	public Vector2 substract(Vector2 v2) {
+		return new Vector2(this.x-v2.x, this.y-v2.y);
 	}
 	
-	public void sustraccion(Vector2 v2) {
-		this.x = this.x-v2.x;
-		this.y = this.y-v2.y;
+	public Vector2 multiply(Vector2 v2) {
+		return new Vector2(this.x*v2.x, this.y*v2.y);
 	}
 	
-	public void sustraccion(double x) {
-		this.x = this.x-x;
-		this.y = this.y-x;
+	public Vector2 division(Vector2 v2) {
+		return new Vector2(this.x/v2.x,this.y/v2.y);
 	}
 	
-	public void multiplicacion(Vector2 v2) {
-		this.x = this.x*v2.x;
-		this.y = this.y*v2.y;
-	}
-	
-	public void multiplicacion(double x) {
-		this.x = this.x*x;
-		this.y = this.y*x;
-	}
-	
-	public void division(Vector2 v2) {
-		this.x = this.x/v2.x;
-		this.y = this.y/v2.y;
-	}
-	
-	public void division(double x) {
+	public void divisionSelf(double x) {
 		this.x = this.x/x;
 		this.y = this.y/x;
+		resetCache();
 	}
 	
-	public Vector2 negado() {
-		this.x = this.x*-1;
-		this.y = this.y*-1;
-		return this;
+	public Vector2 negate() {
+		return new Vector2(this.x*-1,this.y*-1);
 	}
-	
+
+	public Vector2 addAmplitude(double amplitude){
+		return new Vector2(this.x*amplitude, this.y*amplitude);
+	}
+
+	public Vector2 getNormalized(){
+		if(normalized == null){
+			double amplitude = getAmplitude();
+			normalized = new Vector2(this.x/amplitude,this.y/amplitude);
+		}
+		return normalized;
+	}
+
+	public double getAmplitude(){
+		if(Double.isNaN(amplitude)){
+			amplitude = Math.sqrt(Math.pow(this.x,2)+Math.pow(this.y, 2));
+		}
+		return amplitude;
+	}
 	
 	
 	public static double distancia(Vector2 v1, Vector2 v2) {
@@ -85,28 +105,28 @@ public class Vector2 {
 		return (double) Math.sqrt(Math.pow(distanciaX,2)+Math.pow(distanciaY, 2));
 	}
 	
-	public static Vector2 adicion(Vector2 v1, Vector2 v2) {
+	public static Vector2 add(Vector2 v1, Vector2 v2) {
 		Vector2 p = new Vector2();
 		p.x = v1.x+v2.x;
 		p.y = v1.y+v2.y;
 		return p;
 	}
 	
-	public static Vector2 adicion(Vector2 v1, double x) {
+	public static Vector2 add(Vector2 v1, double x) {
 		Vector2 p = new Vector2();
 		p.x = v1.x+x;
 		p.y = v1.y+x;
 		return p;
 	}
 	
-	public static Vector2 sustraccion(Vector2 v1, Vector2 v2) {
+	public static Vector2 substract(Vector2 v1, Vector2 v2) {
 		Vector2 p = new Vector2();
 		p.x = v1.x-v2.x;
 		p.y = v1.y-v2.y;
 		return p;
 	}
 	
-	public static Vector2 sustraccion(Vector2 v1, double x) {
+	public static Vector2 substract(Vector2 v1, double x) {
 		Vector2 p = new Vector2();
 		p.x = v1.x-x;
 		p.y = v1.y-x;

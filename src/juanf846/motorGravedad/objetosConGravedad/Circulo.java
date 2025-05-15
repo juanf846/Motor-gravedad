@@ -12,10 +12,19 @@ public class Circulo extends ObjetoConGravedad{
 	private static Logger LOG = Logger.getLogger(Circulo.class.getName());
 	
 	private double radio;
-	private Vector2 movimiento;
+	private Vector2 momento;
 	private double masa;
+	private Vector2 velocidad;
 	private Color color;
 	private boolean calcularGravedad;
+
+	public Vector2 getMomento() {
+		return momento;
+	}
+	
+	public void setMomento(Vector2 momento) {
+		this.momento = momento;
+	}
 	
 	public double getRadio() {
 		return radio;
@@ -51,7 +60,7 @@ public class Circulo extends ObjetoConGravedad{
 
 	public Circulo(double posicionX, double posicionY, double masa) {
 		posicion = new Vector2(posicionX,posicionY);
-		movimiento = new Vector2();
+		momento = new Vector2();
 		this.masa = masa;
 		color = Color.BLACK;
 		calcularGravedad = true;
@@ -63,15 +72,14 @@ public class Circulo extends ObjetoConGravedad{
 	 */
 	@Override
 	public void agregarFuerza(Vector2 v) {
-		movimiento.adicion(Vector2.division(v, masa));
+		momento = momento.add(Vector2.division(v, masa));
 	}
 	
 	@Override
 	public void calcularMovimiento(ObjetoConGravedad[] otrosObjetos, int pasos) {
 		Vector2 nuevaPosicion = (Vector2) posicion.clone();
-		nuevaPosicion.adicion(Vector2.multiplicacion(movimiento, 
-				(1f/pasos) 
-				* (1000/Configuracion.getInstance().getInt(Clave.MAX_FRAMES))/1000f));
+		nuevaPosicion = nuevaPosicion.add(Vector2.multiplicacion(momento,
+				(1f/pasos) * (1000/Configuracion.getInstance().getInt(Clave.MAX_FRAMES))/1000f));
 		boolean mover = true;
 		/*for(int i=0;i<otrosObjetos.length;i++) {
 			if(otrosObjetos[i] != this && otrosObjetos[i] instanceof Circulo) {
@@ -129,7 +137,7 @@ public class Circulo extends ObjetoConGravedad{
 		}
 	}*/
 	public static final double MARGEN_DE_ERROR = 0.001;
-	@Override
+	/*@Override
 	public void calcularColision(ObjetoConGravedad obj) {
 		if(obj instanceof Circulo) {
 			Circulo c2 = (Circulo) obj;
@@ -140,24 +148,24 @@ public class Circulo extends ObjetoConGravedad{
 				LOG.info("Colision entre ("+obj+" y "+this+")");
 				LOG.info(""+minimo2);
 				LOG.info(""+distancia);
-				Vector2 suma = Vector2.adicion(c2.movimiento, this.movimiento);
-				this.movimiento = this.movimiento.negado();
-				c2.movimiento = c2.movimiento.negado();
+				Vector2 suma = Vector2.add(c2.momento, this.momento);
+				this.momento = this.momento.negado();
+				c2.momento = c2.momento.negado();
 				
 				this.calcularMovimiento(null, 1);
 				c2.calcularMovimiento(null, 1);
 				
-				this.movimiento = this.movimiento.negado();
-				c2.movimiento = c2.movimiento.negado();
-				this.movimiento = suma;
-				c2.movimiento = suma;
+				this.momento = this.momento.negado();
+				c2.momento = c2.momento.negado();
+				this.momento = suma;
+				c2.momento = suma;
 				
 				LOG.info(""+distancia);
 				distancia = Vector2.distancia(c2.getPosicion(), this.getPosicion());
 				LOG.info(""+distancia);
 			}
 		}
-	}
+	}*/
 	
 	public static int cuerposMuyCerca = 0;
 	@Override
@@ -169,14 +177,13 @@ public class Circulo extends ObjetoConGravedad{
 		//if(distancia<1) distancia=1;
 		double fuerza = (this.getMasa() * obj2.getMasa() / ((double)Math.pow(distancia, 2))) * CONSTANTE_GRAVEDAD;
         Vector2 tmp = Vector2.multiplicacion(
-        		Vector2.sustraccion(this.getPosicion(), obj2.getPosicion())
+        		Vector2.substract(this.getPosicion(), obj2.getPosicion())
         		,fuerza
         		*(1000/Configuracion.getInstance().getInt(Clave.MAX_FRAMES)/1000f)
         		*MULTIPLICADOR);
         obj2.agregarFuerza(tmp);
-        tmp.negado();
-        if(calcularGravedad)
-        this.agregarFuerza(tmp);
+        Vector2 tmp2 = tmp.negate();
+        if(calcularGravedad) this.agregarFuerza(tmp2);
         
         if(distancia<0.1) {
         	//System.out.println("Detectados cuerpos muy cerca!!!! tmp: "+tmp+" distancia: "+distancia+" fuerza: "+fuerza);
